@@ -1,4 +1,6 @@
 package database;
+import org.apache.log4j.Logger;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -13,7 +15,7 @@ public class LoginChecker {
                 }
             }
         } catch (SQLException exc) {
-            exc.printStackTrace();
+            Logger.getLogger(exc.getMessage());
         }
         return -1;
     }

@@ -1,4 +1,6 @@
 package database;
+import org.apache.log4j.Logger;
+
 import java.sql.*;
 
 public class Connector {
@@ -24,7 +26,7 @@ public class Connector {
             connection = DriverManager.getConnection(URL, USER, PASS);
             started = true;
         } catch (Exception exc) {
-            exc.printStackTrace();
+            Logger.getLogger(exc.getMessage());
         }
     }
 }

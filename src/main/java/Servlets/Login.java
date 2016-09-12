@@ -1,3 +1,5 @@
+package Servlets;
+
 import database.LoginChecker;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
