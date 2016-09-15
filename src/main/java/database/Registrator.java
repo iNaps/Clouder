@@ -1,16 +1,12 @@
 package database;
 import org.apache.log4j.Logger;
-
 import java.sql.*;
 
 public class Registrator {
 
     private static Registrator inst;
     private Registrator(){}
-    private String login;
     private int id;
-    private String pass;
-    private String email;
 
     public static Registrator getInst() {
         if (inst == null) {
@@ -19,11 +15,28 @@ public class Registrator {
         return inst;
     }
 
-    public boolean reg(String login, String pass, String email) {
+    public boolean isLoginExist(String login) {
         try {
-            this.login = login;
-            this.pass = pass;
-            this.email = email;
+            String sql = "SELECT id FROM users where login=\"" + login + '"';
+            ResultSet set = Connector.getSet(sql);
+            return set.next();
+        } catch (Exception exc){
+            Logger.getLogger(exc.getMessage());
+            return false;
+        }
+    }
+    public boolean isMailExist(String email) {
+        try {
+            String sql = "SELECT id FROM users where email=\"" + email + '"';
+            ResultSet set = Connector.getSet(sql);
+            return set.next();
+        } catch (Exception exc){
+            Logger.getLogger(exc.getMessage());
+            return false;
+        }
+    }
+    public void reg(String login, String pass, String email) {
+        try {
             String sql = "SELECT id FROM users where login=\"" + login + '"';
             ResultSet set = Connector.getSet(sql);
             if (!set.next()) {
@@ -35,13 +48,9 @@ public class Registrator {
                 set = Connector.getSet(sql);
                 set.next();
                 this.id = set.getInt("id");
-                return true;
-            } else {
-                return false;
             }
         } catch (Exception exc){
             Logger.getLogger(exc.getMessage());
-            return false;
         }
     }
 

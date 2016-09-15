@@ -2,7 +2,6 @@ package Servlets;
 
 import database.Uploader;
 import org.apache.log4j.Logger;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;

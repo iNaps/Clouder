@@ -19,23 +19,39 @@
                     <table>
                         <tr>
                             <td width="100px">Логин: </td>
-                            <td width="150px"><input type="text" name="login" placeholder="Login" tabindex="1"></td>
-                            <td><div id="flagLogin"></div></td>
+                            <td width="150px"><input type="text" name="login" placeholder="Login" value="${param.login}" tabindex="1"></td>
+                            <td>
+                                <c:if test="${"" != param.loginError}">
+                                    ${param.loginError}
+                                </c:if>
+                            </td>
                         </tr>
                         <tr>
                             <td width="100px">e-mail: </td>
-                            <td width="150px"><input type="text" name="email" placeholder="Email" tabindex="2"></td>
-                            <td><div id="flagEmail"></div></td>
+                            <td width="150px"><input type="text" name="email" placeholder="Email" value="${param.email}" tabindex="2"></td>
+                            <td>
+                                <c:if test="${"" != param.emailError}">
+                                    ${param.emailError}
+                                </c:if>
+                            </td>
                         </tr>
                         <tr>
                             <td>Пароль: </td>
-                            <td width="150px"><input type="password" name="password" tabindex="3"></td>
-                            <td><div id="flagPass"></div></td>
+                            <td width="150px"><input type="password" name="password" value="${param.pass}" tabindex="3"></td>
+                            <td>
+                                <c:if test="${"" != param.passError}">
+                                    ${param.passError}
+                                </c:if>
+                            </td>
                         </tr>
                         <tr>
                             <td>Ещё раз: </td>
-                            <td width="150px"><input type="password" name="passwordR" tabindex="4"></td>
-                            <td><div id="flagCheckpass"></div></td>
+                            <td width="150px"><input type="password" name="password2" value="${param.pass2}" tabindex="4"></td>
+                            <td>
+                                <c:if test="${"" != param.passcError}">
+                                    ${param.passcError}
+                                </c:if>
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="2" tabindex="4"><button tabindex="5">Регистрация</button></td>
