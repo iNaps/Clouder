@@ -15,11 +15,11 @@ public class Uploader {
 
     public boolean upload(String fileName, String filePath, int id) {
         try {
-            String sql = "insert into files (filename,filepath,id) values(" +
-                    '"' + fileName + "\"," +
-                    '"' + filePath + "\"," +
-                    '"' + id + "\")";
-            Connector.execute(sql);
+            StringBuilder sb = new StringBuilder("insert into files values(");
+            sb.append('\'').append(fileName).append("',");
+            sb.append('\'').append(filePath).append("',");
+            sb.append('\'').append(id).append("')");
+            Connector.execute(sb.toString());
             return true;
         } catch (SQLException exc) {
             Logger.getLogger(exc.getMessage());

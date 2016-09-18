@@ -16,7 +16,7 @@
             </div>
             <div class="content">
                 <a href="/login"><button>Выход</button></a>
-                <form action="/upload" method="POST" enctype="multipart/form-data" target="null">
+                <form action="/upload" method="POST" enctype="multipart/form-data" accept-charset="ISO-8859-1">
                     <table>
                         <tr>
                             <td><input type="file" name="file" multiple></td>

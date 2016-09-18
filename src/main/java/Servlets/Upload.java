@@ -1,6 +1,7 @@
 package Servlets;
 
 import database.Uploader;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -36,8 +37,8 @@ public class Upload extends HttpServlet {
         if (Uploader.getInst().upload(fileName, filePath, id)) {
             resp.sendRedirect("/cabinet.jsp");
         } else {
-            resp.sendRedirect("/test.jsp");
-            //Some error window message
+            resp.sendRedirect("/cabinet.jsp");
+//            Some error window message
         }
     }
 
@@ -63,7 +64,9 @@ public class Upload extends HttpServlet {
     private String getFileName(Part file) {
         Pattern regex = Pattern.compile("(?<=filename=\").*?(?=\")");
         Matcher matcher = regex.matcher(file.getHeader("content-disposition"));
-        return matcher.find() ? matcher.group() : "unknown";
+        matcher.find();
+        String s = matcher.group();
+        return StringEscapeUtils.unescapeHtml4(s);
     }
 
     private String getMD5(String fileName) {

@@ -15,7 +15,7 @@
                 <jsp:include page="menu.jsp"/>
             </div>
             <div class="content">
-                <form action="/reg" method="POST">
+                <form action="/reg" method="POST" accept-charset="ISO-8859-1">
                     <table>
                         <tr>
                             <td width="100px">Логин: </td>

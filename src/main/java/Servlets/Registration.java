@@ -1,6 +1,8 @@
 package Servlets;
 
 import database.Registrator;
+import org.apache.commons.lang3.StringEscapeUtils;
+import tools.Encoder;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -9,16 +11,15 @@ import java.util.regex.Pattern;
 
 @WebServlet("/reg")
 public class Registration extends HttpServlet {
-    private static final Pattern MAIL = Pattern.compile("^[A-Za-z0-9]+@[A-Za-z0-9]+\\.[A-Za-z0-9]+$", Pattern.CASE_INSENSITIVE);
-    private static final Pattern PASS = Pattern.compile("^[A-Za-z0-9]+$", Pattern.CASE_INSENSITIVE);
+    private static final Pattern MAIL = Pattern.compile("^[А-Яа-яA-Za-z0-9]+@[А-Яа-яA-Za-z0-9]+\\.[А-Яа-яA-Za-z0-9]+$", Pattern.CASE_INSENSITIVE);
+    private static final Pattern PASS = Pattern.compile("^[А-Яа-яA-Za-z0-9]+$", Pattern.CASE_INSENSITIVE);
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String login = req.getParameter("login");
-        String email = req.getParameter("email");
-        String pass = req.getParameter("password");
-        String pass2 = req.getParameter("password2");
-        String response = "/reg.jsp?login="+login+"&email="+email+"&pass="+pass+"&pass2="+pass2;
+        String login = StringEscapeUtils.unescapeHtml4(req.getParameter("login"));
+        String email = StringEscapeUtils.unescapeHtml4(req.getParameter("email"));
+        String pass = StringEscapeUtils.unescapeHtml4(req.getParameter("password"));
+        String pass2 = StringEscapeUtils.unescapeHtml4(req.getParameter("password2"));
         String loginCheck, emailCheck, passCheck, pass2Check;
         boolean isLogin, isMail, isPass;
         Registrator reg = Registrator.getInst();
@@ -29,7 +30,7 @@ public class Registration extends HttpServlet {
             isLogin = false;
             loginCheck = "&loginError=<img src=\"images/nope.png\">";
         }
-        if (MAIL.matcher(email).find()) {
+        if (MAIL.matcher(email).matches()) {
             if (!reg.isMailExist(email)) {
                 emailCheck = "&emailError=<img src=\"images/yep.png\">";
                 isMail = true;
@@ -42,10 +43,10 @@ public class Registration extends HttpServlet {
             emailCheck = "&emailError=<img src=\"images/nope.png\">";
         }
 
-        if (!PASS.matcher(pass).find()) {
-            passCheck = "&passError=<img src=\"images/nope.png\">";
-        } else {
+        if (PASS.matcher(pass).matches()) {
             passCheck = "&passError=<img src=\"images/yep.png\">";
+        } else {
+            passCheck = "&passError=<img src=\"images/nope.png\">";
         }
 
         if (pass.equals(pass2)) {
@@ -62,7 +63,12 @@ public class Registration extends HttpServlet {
             ss.setAttribute("id", reg.getId());
             resp.sendRedirect("/cabinet.jsp");
         } else {
-            resp.sendRedirect(response+loginCheck+emailCheck+passCheck+pass2Check);
+            login = Encoder.encode(login);
+            email = Encoder.encode(email);
+            pass = Encoder.encode(pass);
+            pass2 = Encoder.encode(pass2);
+            String response = "/reg.jsp?login="+login+"&email="+email+"&pass="+pass+"&pass2="+pass2+loginCheck+emailCheck+passCheck+pass2Check;
+            resp.sendRedirect(response);
         }
     }
 }
