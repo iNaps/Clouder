@@ -1,4 +1,4 @@
-package Servlets;
+package servlets;
 
 import database.LinkChecker;
 import tools.Encoder;

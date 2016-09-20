@@ -1,4 +1,4 @@
-package Servlets;
+package servlets;
 
 import database.Uploader;
 import org.apache.commons.lang3.StringEscapeUtils;
@@ -25,7 +25,12 @@ public class Upload extends HttpServlet {
         Part file = req.getPart("file");
         byte[] stream = getStream(file);
         String fileName = getFileName(file);
-        String md5 = getMD5(fileName);
+        if (fileName.equals("")) {
+            //null file error
+            resp.sendRedirect("/cabinet.jsp");
+            return;
+        }
+        String md5 = getMD5(stream);
         String dirPath = getDirPath(md5);
         FileOutputStream fos = new FileOutputStream(dirPath);
         for (int value : stream) {
@@ -69,14 +74,14 @@ public class Upload extends HttpServlet {
         return StringEscapeUtils.unescapeHtml4(s);
     }
 
-    private String getMD5(String fileName) {
+    private String getMD5(byte[] file) {
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance("MD5");
         } catch (NoSuchAlgorithmException e) {
             Logger.getLogger(e.getMessage());
         }
-        md.update(fileName.getBytes());
+        md.update(file);
         byte[] b = md.digest();
         BigInteger bigInt = new BigInteger(1, b);
         return bigInt.toString(16);

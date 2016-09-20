@@ -1,4 +1,4 @@
-package Servlets;
+package servlets;
 
 import database.Registrator;
 import org.apache.commons.lang3.StringEscapeUtils;
@@ -23,7 +23,7 @@ public class Registration extends HttpServlet {
         String loginCheck, emailCheck, passCheck, pass2Check;
         boolean isLogin, isMail, isPass;
         Registrator reg = Registrator.getInst();
-        if (!reg.isLoginExist(login)) {
+        if (!login.equals("") && !reg.isLoginExist(login)) {
             isLogin = true;
             loginCheck = "&loginError=<img src=\"images/yep.png\">";
         } else {
@@ -49,7 +49,7 @@ public class Registration extends HttpServlet {
             passCheck = "&passError=<img src=\"images/nope.png\">";
         }
 
-        if (pass.equals(pass2)) {
+        if (!pass.equals("") && pass.equals(pass2)) {
             pass2Check = "&passcError=<img src=\"images/yep.png\">";
             isPass = true;
         } else {

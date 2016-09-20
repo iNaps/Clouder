@@ -1,4 +1,4 @@
-package Servlets;
+package servlets;
 
 import database.ListMaker;
 import javax.servlet.ServletException;

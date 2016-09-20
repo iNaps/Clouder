@@ -1,4 +1,4 @@
-package Servlets;
+package servlets;
 
 import database.Remover;
 import org.apache.log4j.Logger;
