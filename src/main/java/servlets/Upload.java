@@ -1,5 +1,6 @@
 package servlets;
 
+import database.Connector;
 import database.Uploader;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.log4j.Logger;
@@ -19,6 +20,7 @@ import java.util.regex.Pattern;
                 maxFileSize=(long)5*1024*1024*1024,
                 maxRequestSize=(long)5*1024*1024*1024)
 public class Upload extends HttpServlet {
+    private static final Logger LOGGER = Logger.getLogger(Connector.class.getName());
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,7 +28,7 @@ public class Upload extends HttpServlet {
         byte[] stream = getStream(file);
         String fileName = getFileName(file);
         if (fileName.equals("")) {
-            //null file error
+            LOGGER.info("Attempt to empty upload");
             resp.sendRedirect("/cabinet.jsp");
             return;
         }
@@ -43,7 +45,7 @@ public class Upload extends HttpServlet {
             resp.sendRedirect("/cabinet.jsp");
         } else {
             resp.sendRedirect("/cabinet.jsp");
-//            Some error window message
+            LOGGER.info("Attempt to empty upload");
         }
     }
 

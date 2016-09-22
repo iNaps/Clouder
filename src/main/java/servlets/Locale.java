@@ -1,5 +1,8 @@
 package servlets;
 
+import database.Connector;
+import org.apache.log4j.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,12 +13,14 @@ import java.io.IOException;
 
 @WebServlet("/locale")
 public class Locale extends HttpServlet {
+    private static final Logger LOGGER = Logger.getLogger(Connector.class.getName());
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String loc = req.getParameter("loc");
         if (loc != null) {
             session.setAttribute("language", loc);
+            LOGGER.info("Localization set");
         } else {
             session.setAttribute("language", "default");
         }

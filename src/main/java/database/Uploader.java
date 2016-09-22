@@ -1,11 +1,11 @@
 package database;
 
 import org.apache.log4j.Logger;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Uploader {
+    private static final Logger LOGGER = Logger.getLogger(Uploader.class.getName());
     private static Uploader inst;
     private Uploader(){}
     public static Uploader getInst() {
@@ -14,7 +14,6 @@ public class Uploader {
         }
         return inst;
     }
-
     public boolean upload(String fileName, String filePath, int id) {
         try {
             if (!isExist(fileName, filePath, id)) {
@@ -23,16 +22,22 @@ public class Uploader {
                 sb.append('\'').append(filePath).append("',");
                 sb.append('\'').append(id).append("')");
                 Connector.execute(sb.toString());
+                LOGGER.info("Upload OK");
                 return true;
             } else {
+                LOGGER.info("Upload FAIL");
                 return false;
             }
         } catch (SQLException exc) {
-            Logger.getLogger(exc.getMessage());
+            LOGGER.info("DB error:" + exc);
             return false;
         }
     }
 
+    /**
+     * Checks file uniqueness. Some files can have equals path or names, but files are different.
+     * @return true if absolutely similar file, else false
+     */
     public boolean isExist(String fileName, String filePath, int id) {
         try {
             String sql = "SELECT filepath FROM files WHERE filepath=\"" +filePath+ "\" AND id=\"" + id + '"';
@@ -46,7 +51,7 @@ public class Uploader {
             }
             return isPathExist && isNameExist;
         } catch (Exception exc){
-            Logger.getLogger(exc.getMessage());
+            LOGGER.info("DB error:" + exc);
             return false;
         }
     }

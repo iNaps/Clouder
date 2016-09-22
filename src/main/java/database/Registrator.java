@@ -3,14 +3,14 @@ import org.apache.log4j.Logger;
 import java.sql.*;
 
 public class Registrator {
-
+    private static final Logger LOGGER = Logger.getLogger(Registrator.class.getName());
     private static Registrator inst;
     private Registrator(){}
-    private int id;
 
     public static Registrator getInst() {
         if (inst == null) {
             inst = new Registrator();
+            LOGGER.info("Registrator class initialized");
         }
         return inst;
     }
@@ -21,7 +21,7 @@ public class Registrator {
             ResultSet set = Connector.getSet(sql);
             return set.next();
         } catch (Exception exc){
-            Logger.getLogger(exc.getMessage());
+            LOGGER.info("DB error:" + exc);
             return false;
         }
     }
@@ -31,11 +31,11 @@ public class Registrator {
             ResultSet set = Connector.getSet(sql);
             return set.next();
         } catch (Exception exc){
-            Logger.getLogger(exc.getMessage());
+            LOGGER.info("DB error:" + exc);
             return false;
         }
     }
-    public void reg(String login, String pass, String email) {
+    public int reg(String login, String pass, String email) {
         try {
             String sql = "SELECT id FROM users where login=\"" + login + '"';
             ResultSet set = Connector.getSet(sql);
@@ -44,17 +44,15 @@ public class Registrator {
                         "\",\"" + email +
                         "\",\"" + pass + "\")";
                 Connector.execute(sql);
+
                 sql = "SELECT id,password FROM users where login=\"" + login + '"';
                 set = Connector.getSet(sql);
                 set.next();
-                this.id = set.getInt("id");
+                return set.getInt("id");
             }
         } catch (Exception exc){
-            Logger.getLogger(exc.getMessage());
+            LOGGER.info("DB error:" + exc);
         }
-    }
-
-    public int getId() {
-        return this.id;
+        return -1;
     }
 }

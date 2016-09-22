@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ListMaker {
+    private static final Logger LOGGER = Logger.getLogger(ListMaker.class.getName());
     public static String get(int id) {
         StringBuilder sb = new StringBuilder();
         try {
@@ -21,8 +22,9 @@ public class ListMaker {
                         .append("<buttonD>Удалить</buttonD></a></td></tr>");
             }
             sb.append("</table>");
+            LOGGER.info("List was formed");
         } catch (SQLException exc){
-            Logger.getLogger(exc.getMessage());
+            LOGGER.info("DB error:" + exc);
         }
         return sb.toString();
     }

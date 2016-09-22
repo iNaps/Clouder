@@ -1,7 +1,9 @@
 package servlets;
 
+import database.Connector;
 import database.Registrator;
 import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.log4j.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -10,6 +12,7 @@ import java.util.regex.Pattern;
 
 @WebServlet("/registration")
 public class Registration extends HttpServlet {
+    private static final Logger LOGGER = Logger.getLogger(Connector.class.getName());
     private static final Pattern MAIL = Pattern.compile("^[А-Яа-яA-Za-z0-9]+@[А-Яа-яA-Za-z0-9]+\\.[А-Яа-яA-Za-z0-9]+$", Pattern.CASE_INSENSITIVE);
     private static final Pattern PASS = Pattern.compile("^[А-Яа-яA-Za-z0-9]+$", Pattern.CASE_INSENSITIVE);
 
@@ -59,12 +62,14 @@ public class Registration extends HttpServlet {
             req.setAttribute("passcError", "false");
         }
         if (isLogin && isMail && isPass) {
-            reg.reg(login, pass, email);
+            int id = reg.reg(login, pass, email);
             HttpSession ss = req.getSession();
             ss.setAttribute("username", login);
-            ss.setAttribute("id", reg.getId());
+            ss.setAttribute("id", id);
+            LOGGER.info("New user registered");
             resp.sendRedirect("/cabinet.jsp");
         } else {
+            LOGGER.info("Invalid registration fields");
             getServletContext().getRequestDispatcher("/registration.jsp").forward(req,resp);
         }
     }

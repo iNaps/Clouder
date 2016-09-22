@@ -1,7 +1,10 @@
 package database;
 import org.apache.log4j.Logger;
 
+import java.sql.SQLException;
+
 public class Remover {
+    private static final Logger LOGGER = Logger.getLogger(Remover.class.getName());
 
     private static Remover inst;
     private Remover(){}
@@ -16,9 +19,10 @@ public class Remover {
         String sql = "DELETE FROM files where filepath=\"" + path + '"';
         try {
             Connector.execute(sql);
+            LOGGER.info("Deleted successful");
             return true;
-        } catch (Exception e) {
-            Logger.getLogger(this.getClass().getName()).error(e.getMessage());
+        } catch (SQLException exc) {
+            LOGGER.info("DB error:" + exc);
             return false;
         }
     }

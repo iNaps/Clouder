@@ -1,5 +1,6 @@
 package servlets;
 
+import database.Connector;
 import database.Remover;
 import org.apache.log4j.Logger;
 import javax.servlet.ServletException;
@@ -12,6 +13,8 @@ import java.io.IOException;
 
 @WebServlet("/remove")
 public class Remove extends HttpServlet {
+    private static final Logger LOGGER = Logger.getLogger(Connector.class.getName());
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String path = req.getParameter("path");
@@ -20,7 +23,7 @@ public class Remove extends HttpServlet {
             file.delete();
             resp.sendRedirect("/cabinet.jsp");
         } else {
-            Logger.getLogger("Some error in Remover service");
+            LOGGER.info("Error occured when file removing");
         }
     }
 }
