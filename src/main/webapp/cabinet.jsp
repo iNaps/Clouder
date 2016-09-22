@@ -35,6 +35,3 @@
     </div>
     </body>
 </html>
-
-
-<a href="cabinet.jsp"><button></button></a>

@@ -14,7 +14,9 @@ import java.io.PrintWriter;
 public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().invalidate();
+        HttpSession session = req.getSession();
+        session.setAttribute("username", null);
+        session.setAttribute("id", null);
         resp.sendRedirect("/index.jsp");
     }
 
@@ -25,10 +27,6 @@ public class Login extends HttpServlet {
         String login = req.getParameter("login");
         String pass = req.getParameter("password");
         HttpSession session = req.getSession();
-        if (req.getParameter("exit") != null) {
-            session.invalidate();
-            return;
-        }
         int id = LoginChecker.check(login, pass);
         if (id > 0) {
             session.setAttribute("username", login);

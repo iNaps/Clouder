@@ -9,7 +9,7 @@
             </div>
         </td>
         <td>
-            <div id="headerButtons">
+            <div>
                 <jsp:include page="/header"/>
             </div>
         </td>

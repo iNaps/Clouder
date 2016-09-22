@@ -9,6 +9,10 @@
     <fmt:setBundle basename="set_ru" var="lang"/>
 </c:if>
 
+<c:if test="${sessionScope.language == 'default'}">
+    <fmt:setBundle basename="set_ru" var="lang"/>
+</c:if>
+
 <c:if test="${sessionScope.language == null}">
     <fmt:setBundle basename="set_en" var="lang"/>
 </c:if>

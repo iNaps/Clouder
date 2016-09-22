@@ -2,4 +2,4 @@
 <jsp:directive.include file="locale.jsp" />
 
 <a href="login.jsp"><button><c:out value="${contentUnauthLogin}"/></button></a>
-<a href="reg.jsp"><button><c:out value="${contentUnauthRegistration}"/></button></a>
+<a href="registration.jsp"><button><c:out value="${contentUnauthRegistration}"/></button></a>

@@ -14,8 +14,16 @@ public class Locale extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String loc = req.getParameter("loc");
-        session.setAttribute("language", loc);
-        getServletContext().getRequestDispatcher("/index.jsp").forward(req,resp);
-//        resp.sendRedirect("/index.jsp");
+        if (loc != null) {
+            session.setAttribute("language", loc);
+        } else {
+            session.setAttribute("language", "default");
+        }
+        String ref = req.getHeader("referer");
+        String res = ref.replaceAll("http://localhost:8080", "");
+        if (res.contains("/locale?loc=")) {
+            res = "/index.jsp";
+        }
+        getServletContext().getRequestDispatcher(res).forward(req,resp);
     }
 }
