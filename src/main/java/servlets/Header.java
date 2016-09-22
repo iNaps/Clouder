@@ -12,6 +12,6 @@ public class Header extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = (String)req.getSession().getAttribute("username");
-        getServletContext().getRequestDispatcher(login != null ? "/auth.jsp" : "/unauth.jsp").include(req, resp);
+        getServletContext().getRequestDispatcher(login != null ? "/header.auth.jsp" : "/header.unauth.jsp").include(req, resp);
     }
 }

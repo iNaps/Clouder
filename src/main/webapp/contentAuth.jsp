@@ -1,3 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<a href="cabinet.jsp"><button>Кабинет</button></a>
-<a href="/login"><button>Выход</button></a>
+<jsp:directive.include file="locale.jsp" />
+
+<a href="cabinet.jsp"><button><c:out value="${contentAuthCabinet}"/></button></a>
+<a href="/login"><button><c:out value="${contentAuthExit}"/></button></a>

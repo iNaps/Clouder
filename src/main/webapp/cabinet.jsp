@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<jsp:directive.include file="locale.jsp" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +17,7 @@
                 <jsp:include page="menu.jsp"/>
             </div>
             <div class="content">
-                <a href="/login"><button>Выход</button></a>
+                <a href="/login"><button><c:out value="${cabinetExit}"/></button></a>
                 <form action="/upload" method="POST" enctype="multipart/form-data" accept-charset="ISO-8859-1">
                     <table>
                         <tr>
@@ -33,3 +35,6 @@
     </div>
     </body>
 </html>
+
+
+<a href="cabinet.jsp"><button></button></a>
