@@ -40,6 +40,9 @@
 <fmt:message key="login.login" bundle="${lang}" var="loginLogin" />
 <fmt:message key="login.pass" bundle="${lang}" var="loginPass" />
 <fmt:message key="login.in" bundle="${lang}" var="loginIn" />
+<fmt:message key="login.recovery" bundle="${lang}" var="loginRecovery" />
+
+<fmt:message key="recovery.button" bundle="${lang}" var="recoveryButton" />
 
 <fmt:message key="cabinet.exit" bundle="${lang}" var="cabinetExit" />
 

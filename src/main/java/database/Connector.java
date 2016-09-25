@@ -7,7 +7,7 @@ import java.sql.*;
 public class Connector {
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost:8081/clouderdb";
-    private static final String USER = "admin";
+    private static final String USER = "root";
     private static final String PASS = "1234";
     private static Connection connection;
     private static final Logger LOGGER = Logger.getLogger(Connector.class.getName());

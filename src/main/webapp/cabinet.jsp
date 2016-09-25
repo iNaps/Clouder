@@ -17,6 +17,20 @@
                 <jsp:include page="menu.jsp"/>
             </div>
             <div class="content">
+                <form action="/edit" method="POST">
+                    <table>
+                        <tr>
+                            <td>Новый e-mail:</td>
+                            <td><input type="text" name="email"></td>
+                            <td><input type="submit"></td>
+                        </tr>
+                        <tr>
+                            <td>Новый пароль:</td>
+                            <td><input type="text" name="password"></td>
+                            <td><input type="submit"></td>
+                        </tr>
+                    </table>
+                </form>
                 <a href="/login"><button><c:out value="${cabinetExit}"/></button></a>
                 <form action="/upload" method="POST" enctype="multipart/form-data" accept-charset="ISO-8859-1">
                     <table>
