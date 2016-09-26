@@ -2,7 +2,6 @@ package servlets;
 
 import database.Connector;
 import org.apache.log4j.Logger;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,9 +25,6 @@ public class Locale extends HttpServlet {
         }
         String ref = req.getHeader("referer");
         String res = ref.replaceAll("http://localhost:8080", "");
-        if (res.contains("/locale?loc=")) {
-            res = "/index.jsp";
-        }
-        getServletContext().getRequestDispatcher(res).forward(req,resp);
+        resp.sendRedirect(res);
     }
 }

@@ -1,4 +1,4 @@
-package servlets;
+package servlets.JspContent;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/index")
-public class IndexContent extends HttpServlet {
+public class Index extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String login = (String)req.getSession().getAttribute("username");
-        getServletContext().getRequestDispatcher(login != null ? "/contentAuth.jsp" : "/contentUnauth.jsp").include(req, resp);
+        Object user = req.getSession().getAttribute("user");
+        getServletContext().getRequestDispatcher(user != null ? "/contentAuth.jsp" : "/contentUnauth.jsp").include(req, resp);
     }
 }

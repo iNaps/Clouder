@@ -1,6 +1,7 @@
 package servlets;
 
 import database.LinkChecker;
+import database.User;
 import org.apache.log4j.Logger;
 import tools.Encoder;
 import javax.servlet.ServletException;
@@ -16,11 +17,11 @@ public class Download extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Integer id = (Integer) req.getSession().getAttribute("id");
-        if (id != null) {
+        User user = (User) req.getSession().getAttribute("user");
+        if (user != null && user.getId() != 0) {
             String filePath = "webapps/" + req.getParameter("link");
             String fileName = Encoder.encode((req.getParameter("filename")));
-            if (LinkChecker.check(req.getParameter("link"), id)) {
+            if (LinkChecker.check(req.getParameter("link"), user.getId())) {
                 File file = new File(filePath);
                 FileInputStream fis = new FileInputStream(file);
                 resp.setContentType("application/octet-stream");
@@ -32,6 +33,7 @@ public class Download extends HttpServlet {
                 }
                 fis.close();
                 outStream.close();
+                LOGGER.info("Download successful");
             } else {
                 LOGGER.info("Another user has tried to get access for file");
                 resp.setContentType("text/html;charset=UTF-8");

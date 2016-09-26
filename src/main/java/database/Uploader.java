@@ -6,22 +6,15 @@ import java.sql.SQLException;
 
 public class Uploader {
     private static final Logger LOGGER = Logger.getLogger(Uploader.class.getName());
-    private static Uploader inst;
-    private Uploader(){}
-    public static Uploader getInst() {
-        if (inst == null) {
-            inst = new Uploader();
-        }
-        return inst;
-    }
-    public boolean upload(String fileName, String filePath, int id) {
+
+    public static boolean upload(String fileName, String filePath, int id) {
         try {
             if (!isExist(fileName, filePath, id)) {
-                StringBuilder sb = new StringBuilder("insert into files values(");
-                sb.append('\'').append(fileName).append("',");
-                sb.append('\'').append(filePath).append("',");
-                sb.append('\'').append(id).append("')");
-                Connector.execute(sb.toString());
+                String sql = "insert into files values(" +
+                        '\'' + fileName + "'," +
+                        '\'' + filePath + "'," +
+                        '\'' + id + "')";
+                Connector.execute(sql);
                 LOGGER.info("Upload OK");
                 return true;
             } else {
@@ -36,9 +29,9 @@ public class Uploader {
 
     /**
      * Checks file uniqueness. Some files can have equals path or names, but files are different.
-     * @return true if absolutely similar file, else false
+     * @return true - if absolutely similar file, else - false
      */
-    public boolean isExist(String fileName, String filePath, int id) {
+    private static boolean isExist(String fileName, String filePath, int id) {
         try {
             String sql = "SELECT filepath FROM files WHERE filepath=\"" +filePath+ "\" AND id=\"" + id + '"';
             ResultSet set = Connector.getSet(sql);

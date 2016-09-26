@@ -1,7 +1,8 @@
 package servlets;
 
 import database.Connector;
-import database.LoginChecker;
+import database.User;
+import database.UsersData;
 import org.apache.log4j.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,8 +20,7 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        session.setAttribute("username", null);
-        session.setAttribute("id", null);
+        session.setAttribute("user", null);
         LOGGER.info("User logged out");
         resp.sendRedirect("/index.jsp");
     }
@@ -29,13 +29,13 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
         PrintWriter out = resp.getWriter();
-        String login = req.getParameter("login");
-        String pass = req.getParameter("password");
+        String username = req.getParameter("login");
+        String password = req.getParameter("password");
         HttpSession session = req.getSession();
-        int id = LoginChecker.check(login, pass);
+        int id = UsersData.getId(username, password);
         if (id > 0) {
-            session.setAttribute("username", login);
-            session.setAttribute("id", id);
+            String email = UsersData.getEmail(id);
+            session.setAttribute("user", new User(id, username, email, password));
             LOGGER.info("User signed in");
             resp.sendRedirect("/cabinet.jsp");
         } else {

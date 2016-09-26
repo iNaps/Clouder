@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="n" uri="WEB-INF/custom.tld"%>
 <jsp:directive.include file="locale.jsp" />
 
 <!DOCTYPE html>
@@ -21,50 +22,42 @@
                     <table>
                         <tr>
                             <td width="100px"><c:out value="${regLogin}"/></td>
-                            <td width="150px"><input type="text" name="login" placeholder="Login" value="${requestScope.login}" tabindex="1"></td>
+                            <td width="150px"><input type="text" name="username" placeholder="Login" value="${requestScope.username}" tabindex="1"></td>
                             <td>
-                                <c:if test="${requestScope.loginError == 'true'}">
-                                    <img src="images/yep.png">
-                                </c:if>
-                                <c:if test="${requestScope.loginError == 'false'}">
-                                    <img src="images/nope.png">
-                                </c:if>
+                                <n:if exp='${requestScope.loginError}'
+                                    isTrue='<img src="images/yep.png">'
+                                    isFalse='<img src="images/nope.png">'
+                                />
                             </td>
                         </tr>
                         <tr>
                             <td width="100px">e-mail: </td>
                             <td width="150px"><input type="text" name="email" placeholder="Email" value="${requestScope.email}" tabindex="2"></td>
                             <td>
-                                <c:if test="${requestScope.emailError == 'true'}">
-                                    <img src="images/yep.png">
-                                </c:if>
-                                <c:if test="${requestScope.emailError == 'false'}">
-                                    <img src="images/nope.png">
-                                </c:if>
+                                <n:if exp='${requestScope.emailError}'
+                                    isTrue='<img src="images/yep.png">'
+                                    isFalse='<img src="images/nope.png">'
+                                />
                             </td>
                         </tr>
                         <tr>
                             <td><c:out value="${regPass}"/>: </td>
-                            <td width="150px"><input type="password" name="password" value="${requestScope.pass}" tabindex="3"></td>
+                            <td width="150px"><input type="password" name="password" value="${requestScope.password}" tabindex="3"></td>
                             <td>
-                                <c:if test="${requestScope.passError == 'true'}">
-                                    <img src="images/yep.png">
-                                </c:if>
-                                <c:if test="${requestScope.passError == 'false'}">
-                                    <img src="images/nope.png">
-                                </c:if>
+                                <n:if exp='${requestScope.passError}'
+                                    isTrue='<img src="images/yep.png">'
+                                    isFalse='<img src="images/nope.png">'
+                                />
                             </td>
                         </tr>
                         <tr>
                             <td><c:out value="${regPass2}"/> </td>
-                            <td width="150px"><input type="password" name="password2" value="${requestScope.pass2}" tabindex="4"></td>
+                            <td width="150px"><input type="password" name="password2" value="${requestScope.password2}" tabindex="4"></td>
                             <td>
-                                <c:if test="${requestScope.passcError == 'true'}">
-                                    <img src="images/yep.png">
-                                </c:if>
-                                <c:if test="${requestScope.passcError == 'false'}">
-                                    <img src="images/nope.png">
-                                </c:if>
+                                <n:if exp='${requestScope.passcError}'
+                                    isTrue='<img src="images/yep.png">'
+                                    isFalse='<img src="images/nope.png">'
+                                />
                             </td>
                         </tr>
                         <tr>

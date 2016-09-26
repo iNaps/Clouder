@@ -12,7 +12,7 @@ public class SessionChecker implements Filter {
     public void doFilter(ServletRequest reqs, ServletResponse resps, FilterChain fc) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) reqs;
         HttpServletResponse resp = (HttpServletResponse) resps;
-        if (req.getSession().getAttribute("username") == null) {
+        if (req.getSession().getAttribute("user") == null) {
             LOGGER.info("Unauthorized client was rejected");
             resp.sendRedirect("/index.jsp");
         } else {
