@@ -1,6 +1,6 @@
 package servlets;
 
-import database.Connector;
+import database.mysql.Connector;
 import org.apache.log4j.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

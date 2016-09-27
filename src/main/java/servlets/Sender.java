@@ -1,7 +1,7 @@
 package servlets;
 
-import database.Connector;
-import database.Recovery;
+import database.mysql.Connector;
+import database.mysql.DataPuller;
 import org.apache.log4j.Logger;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -42,14 +42,14 @@ public class Sender extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
-        if (email != null) {
+        if (email != null && !DataPuller.getInst().isMailExist(email)) {
             try {
                 Session session = Session.getDefaultInstance(props, new Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication(username, password);
                     }
                 });
-                String pass = Recovery.check(email);
+                String pass = DataPuller.getInst().getPassword(email);
                 if (pass != null) {
                     Message msg = new MimeMessage(session);
                     msg.setFrom(new InternetAddress("smtp.clouder.server@gmail.com"));

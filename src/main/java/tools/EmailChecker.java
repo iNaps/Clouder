@@ -1,7 +1,7 @@
 package tools;
 
-import database.Confirmator;
-import database.Connector;
+import database.mysql.Confirmator;
+import database.mysql.Connector;
 import org.apache.log4j.Logger;
 
 import javax.mail.*;
@@ -49,7 +49,7 @@ public class EmailChecker {
             BigInteger bigInt = new BigInteger(1, b);
             String md5 = bigInt.toString(16);
 
-            Confirmator.addLink(oldEmail, newEmail, md5);
+            Confirmator.getInst().addLink(oldEmail, newEmail, md5);
             msg.setText("Press link to confirm new e-mail: localhost:8080/confirmer?md5=" + md5);
             msg.setSentDate(new Date());
             Transport.send(msg);

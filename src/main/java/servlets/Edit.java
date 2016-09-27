@@ -1,6 +1,6 @@
 package servlets;
 
-import database.User;
+import database.mysql.User;
 import org.apache.log4j.Logger;
 import tools.EmailChecker;
 

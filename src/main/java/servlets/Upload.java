@@ -1,8 +1,8 @@
 package servlets;
 
-import database.Connector;
-import database.Uploader;
-import database.User;
+import database.mysql.Connector;
+import database.mysql.DataPuller;
+import database.mysql.User;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import javax.servlet.ServletException;
@@ -42,7 +42,7 @@ public class Upload extends HttpServlet {
         fos.close();
         String filePath = getUrlPath(md5);
         User user = (User) req.getSession().getAttribute("user");
-        if (Uploader.upload(fileName, filePath, user.getId())) {
+        if (DataPuller.getInst().uploadFile(fileName, filePath, user.getId())) {
             resp.sendRedirect("/cabinet.jsp");
         } else {
             resp.sendRedirect("/cabinet.jsp");

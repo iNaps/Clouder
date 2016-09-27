@@ -1,19 +1,22 @@
-package database;
+package database.mysql;
 
 import org.apache.log4j.Logger;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.apache.tomcat.jdbc.pool.PoolProperties;
 import java.sql.*;
 
-public class Connector {
+public class Connector implements AutoCloseable{
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost:8081/clouderdb";
     private static final String USER = "root";
     private static final String PASS = "1234";
+    private static ResultSet resultSet;
+    private static Statement statement;
     private static Connection connection;
     private static final Logger LOGGER = Logger.getLogger(Connector.class.getName());
     private static PoolProperties poolProperties = new PoolProperties();
     private static DataSource datasource;
+
 
     private Connector(){}
     public static void execute(String sql) throws SQLException {
@@ -22,7 +25,9 @@ public class Connector {
     }
     public static ResultSet getSet(String sql) throws SQLException {
         connection = datasource.getConnection();
-        return connection.createStatement().executeQuery(sql);
+        statement = connection.createStatement();
+        resultSet = statement.executeQuery(sql);
+        return resultSet;
     }
 
     static {
@@ -61,5 +66,18 @@ public class Connector {
                         "org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer");
         datasource = new DataSource();
         datasource.setPoolProperties(poolProperties);
+    }
+
+    public void close() throws Exception {
+        try {
+            if(resultSet != null)
+                resultSet.close();
+            if(statement != null)
+                statement.close();
+            if(connection != null)
+                connection.close();
+        } catch (SQLException exc) {
+            LOGGER.error("DB close error: " + exc);
+        }
     }
 }

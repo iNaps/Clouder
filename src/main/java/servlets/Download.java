@@ -1,7 +1,7 @@
 package servlets;
 
-import database.LinkChecker;
-import database.User;
+import database.mysql.DataPuller;
+import database.mysql.User;
 import org.apache.log4j.Logger;
 import tools.Encoder;
 import javax.servlet.ServletException;
@@ -21,7 +21,7 @@ public class Download extends HttpServlet {
         if (user != null && user.getId() != 0) {
             String filePath = "webapps/" + req.getParameter("link");
             String fileName = Encoder.encode((req.getParameter("filename")));
-            if (LinkChecker.check(req.getParameter("link"), user.getId())) {
+            if (DataPuller.getInst().isLinkCorrect(req.getParameter("link"), user.getId())) {
                 File file = new File(filePath);
                 FileInputStream fis = new FileInputStream(file);
                 resp.setContentType("application/octet-stream");

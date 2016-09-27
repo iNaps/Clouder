@@ -1,7 +1,7 @@
 package servlets;
 
-import database.Connector;
-import database.Remover;
+import database.mysql.Connector;
+import database.mysql.DataPuller;
 import org.apache.log4j.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +18,7 @@ public class Remove extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String path = req.getParameter("path");
-        if (Remover.getInst().remove(path)) {
+        if (DataPuller.getInst().removeFile(path)) {
             File file = new File("webapps/" + path);
             file.delete();
             resp.sendRedirect("/cabinet.jsp");

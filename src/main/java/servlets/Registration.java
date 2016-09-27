@@ -1,8 +1,9 @@
 package servlets;
 
-import database.Connector;
-import database.User;
-import database.UsersData;
+import database.mysql.DataPuller;
+import database.mysql.UserFactory;
+import database.mysql.Connector;
+import database.mysql.User;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import javax.servlet.ServletException;
@@ -28,7 +29,7 @@ public class Registration extends HttpServlet {
         req.setAttribute("password", password);
         req.setAttribute("password2", pass2);
         boolean isLogin, isMail, isPass;
-        if (!username.equals("") && !UsersData.isLoginExist(username)) {
+        if (!username.equals("") && !DataPuller.getInst().isLoginExist(username)) {
             isLogin = true;
             req.setAttribute("loginError", "true");
         } else {
@@ -36,7 +37,7 @@ public class Registration extends HttpServlet {
             req.setAttribute("loginError", "false");
         }
         if (MAIL.matcher(email).matches()) {
-            if (!UsersData.isMailExist(email)) {
+            if (!DataPuller.getInst().isMailExist(email)) {
                 req.setAttribute("emailError", "true");
                 isMail = true;
             } else {
@@ -62,8 +63,8 @@ public class Registration extends HttpServlet {
             req.setAttribute("passcError", "false");
         }
         if (isLogin && isMail && isPass) {
-            int id = UsersData.registration(username, password, email);
-            req.getSession().setAttribute("user", new User(id, username, email, password));
+            User user = UserFactory.getInst().create(username, password, email);
+            req.getSession().setAttribute("user", user);
             LOGGER.info("New user registered");
             resp.sendRedirect("/cabinet.jsp");
         } else {

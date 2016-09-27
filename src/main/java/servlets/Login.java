@@ -1,8 +1,8 @@
 package servlets;
 
-import database.Connector;
-import database.User;
-import database.UsersData;
+import database.mysql.User;
+import database.mysql.UserFactory;
+import database.mysql.Connector;
 import org.apache.log4j.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,10 +32,9 @@ public class Login extends HttpServlet {
         String username = req.getParameter("login");
         String password = req.getParameter("password");
         HttpSession session = req.getSession();
-        int id = UsersData.getId(username, password);
-        if (id > 0) {
-            String email = UsersData.getEmail(id);
-            session.setAttribute("user", new User(id, username, email, password));
+        User user = UserFactory.getInst().read(username, password);
+        if (user != null) {
+            session.setAttribute("user", user);
             LOGGER.info("User signed in");
             resp.sendRedirect("/cabinet.jsp");
         } else {

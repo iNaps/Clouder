@@ -1,6 +1,6 @@
 package servlets;
 
-import database.Confirmator;
+import database.mysql.Confirmator;
 import org.apache.log4j.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +16,7 @@ public class Confirmer extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String md5 = req.getParameter("md5");
-        Confirmator.getNewEmail(md5);
+        Confirmator.getInst().getNewEmail(md5);
         resp.sendRedirect("/cabinet.jsp");
     }
 }
