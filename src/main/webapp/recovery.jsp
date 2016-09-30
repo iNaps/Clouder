@@ -5,17 +5,16 @@
 <html>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="css/login.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clouder</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
 </head>
     <body>
-    <div class="header">
-        <jsp:include page="header.jsp"/>
-    </div>
     <div class="main">
         <div class="frame">
-            <div class="menu">
-                <jsp:include page="menu.jsp"/>
-            </div>
             <div class="content">
                 <form action="/sender" method="POST">
                     <table>

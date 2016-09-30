@@ -5,17 +5,17 @@
 <html>
 <head>
     <title>Cabinet</title>
-    <link rel="stylesheet" href="css/cabinet.css">
+    <%--<link rel="stylesheet" href="css/cabinet.css">--%>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clouder</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
 </head>
     <body>
-    <div class="header">
-        <jsp:include page="header.jsp"/>
-    </div>
     <div class="main">
         <div class="frame">
-            <div class="menu">
-                <jsp:include page="menu.jsp"/>
-            </div>
             <div class="content">
                 <table>
                     <tr>
@@ -50,4 +50,13 @@
         <jsp:include page ="bottom.jsp"/>
     </div>
     </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+  </head>
+    <a class="btn btn-success btn-lg" href="cabinet.jsp" role="button"><c:out value="${contentAuthCabinet}"/></a>
+    <a class="btn btn-success btn-lg" href="/login" role="button"><c:out value="${contentAuthExit}"/></a>
 </html>

@@ -17,17 +17,13 @@
         <a class="navbar-brand" href="index.jsp">Clouder</a>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Главная</a></li>
-            <li><a href="about.jsp">О сервисе</a></li>
+            <li><a href="index.jsp">Главная</a></li>
+            <li class="active"><a href="#">О сервисе</a></li>
             <li><a href="contacts.jsp">Контакты</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="login.jsp">Вход</a></li>
+            <li><a href="login.html">Вход</a></li>
             <li><a href="registration.jsp">Регистрация</a></li>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="/locale?loc=ru" ><img src="images/ru-flag.png" class="img-rounded" alt="Cinque Terre" width="25" height="15"></a></li>
-              <li><a href="/locale?loc=en"><img src="images/en-flag.png" class="img-rounded" alt="Cinque Terre" width="25" height="15"></a></li>
-            </ul>
           </ul>
         </div>
       </div>
