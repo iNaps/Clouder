@@ -1,0 +1,17 @@
+.content {
+  text-align: center;
+  padding-top: 300px;
+  padding-bottom: 600px;
+  background-color: #444444;
+}
+
+.bottom {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  background-color: #292929;
+}
+
+.container ul {
+    list-style-type: none;
+}
