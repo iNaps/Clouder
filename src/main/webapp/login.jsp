@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title><c:out value="${signin}"/></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Signin Template for Bootstrap</title>
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/signin.css" rel="stylesheet">
   </head>
@@ -30,10 +30,7 @@
             <td colspan="2" class="text-center"><a href="/recovery.jsp"><c:out value="${loginRecovery}"/></a></td>
           </tr>
         </table>
-        <div class="checkbox">
-          <label><input type="checkbox" value="remember-me">Запомнить</label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit"><c:out value="${signin}"/></button>
+        <button class="btn btn-lg btn-success btn-block" type="submit"><c:out value="${signin}"/></button>
       </form>
     </div>
   </body>

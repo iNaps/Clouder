@@ -4,6 +4,15 @@ body {
   background-color: #eee;
 }
 
+.container h1 a {
+  color: #bbbbbb;
+  text-decoration: none;
+  transition-duration: .2s;
+}
+.container h1 a:hover {
+  color: #1b7821;
+}
+
 .form-signin {
   max-width: 330px;
   padding: 15px;

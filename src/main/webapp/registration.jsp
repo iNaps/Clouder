@@ -60,7 +60,7 @@
             </td>
           </tr>
           <tr>
-            <td colspan="2"><button class="btn btn-lg btn-primary btn-block" type="submit"><c:out value="${regButton}"/></button></td>
+            <td colspan="2"><button class="btn btn-lg btn-success btn-block" type="submit"><c:out value="${regButton}"/></button></td>
           </tr>
         </table>
       </form>

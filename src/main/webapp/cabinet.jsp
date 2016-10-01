@@ -11,55 +11,56 @@
     <title>Clouder</title>
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/cabinet.css" rel="stylesheet">
+    <link href="css/bottom.css" rel="stylesheet">
 </head>
     <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="index.jsp">Clouder</a>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#"><c:out value="${navbarMain}"/></a></li>
-            <li><a href="about.jsp"><c:out value="${navbarAbout}"/></a></li>
-            <li><a href="contacts.jsp"><c:out value="${navbarContacts}"/></a></li>
-          </ul>
-          <jsp:include page="navbar.jsp"/>
-        </div>
-      </div>
-    </nav>
-    <div class="main">
-        <div class="frame">
-            <div class="content text-center">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <a class="navbar-brand" href="index.jsp">Clouder</a>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#"><c:out value="${navbarMain}"/></a></li>
+                <li><a href="about.jsp"><c:out value="${navbarAbout}"/></a></li>
+                <li><a href="contacts.jsp"><c:out value="${navbarContacts}"/></a></li>
+              </ul>
+              <jsp:include page="navbar.jsp"/>
+            </div>
+          </div>
+        </nav>
+        <div class="content">
+            <div class="main" align="center">
+                <a class="btn btn-success btn-lg" href="/login" role="button"><c:out value="${exit}"/></a>
                 <table>
                     <tr>
-                        <td><c:out value="${cabinetNewEmail}"/></td>
+                        <td class="text"><c:out value="${cabinetNewEmail}"/></td>
                         <form action="/edit" method="POST">
                             <td><input type="text" name="email"></td>
                             <td><input type="submit"></td>
                         </form>
                     </tr>
                     <tr>
-                        <td><c:out value="${cabinetNewPassword}"/></td>
+                        <td class="text"><c:out value="${cabinetNewPassword}"/></td>
                         <form action="/edit" method="POST">
                             <td><input type="password" name="password"></td>
                             <td><input type="submit"></td>
                         </form>
                     </tr>
                 </table>
-                <a href="/login"><button><c:out value="${exit}"/></button></a>
                 <form action="/upload" method="POST" enctype="multipart/form-data" accept-charset="ISO-8859-1">
                     <table>
                         <tr>
-                            <td><input type="file" name="file" multiple></td>
-                            <td><input type="submit" value="Загрузить"></td>
+                            <td class="text"><input type="file" name="file" multiple></td>
+                            <td><input type="submit"></td>
                         </tr>
                     </table>
                 </form>
                 <jsp:include page="/list"/>
             </div>
         </div>
-    </div>
-    <div class="bottom text-center">
-        <a class="btn btn-success btn-lg" href="registration.jsp" role="button">Кнопка</a>
-    </div>
+        <div class="bottom">
+            <div class="bottomc">
+                <jsp:include page="bottom.jsp"/>
+            </div>
+        </div>
     </body>
 </html>

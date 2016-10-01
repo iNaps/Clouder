@@ -1,19 +1,20 @@
 .content {
-  align-items: center;
-  align-content: center;
-  text-align: center;
+  background-color: #444444;
   padding-top: 300px;
   padding-bottom: 600px;
-  background-color: #444444;
-}
-
-.bottom {
   text-align: center;
-  padding-top: 20px;
-  padding-bottom: 50px;
-  background-color: #292929;
 }
 
-.container ul {
-    list-style-type: none;
+.main {
+  display: inline-block;
+  text-align: center;
 }
+
+.text {
+  color: #d1d1d1;
+}
+
+.content td input{
+  color: #000;
+}
+

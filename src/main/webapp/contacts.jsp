@@ -10,6 +10,7 @@
     <title>Clouder</title>
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
+    <link href="css/bottom.css" rel="stylesheet">
   </head>
   <body>
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -29,9 +30,10 @@
       <jsp:include page="/index"/>
     </div>
     <div class="bottom">
-      <a class="btn btn-success btn-lg" href="registration.jsp" role="button">Кнопка</a>
+      <div class="bottomc">
+        <jsp:include page="bottom.jsp"/>
+      </div>
     </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="/project/assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="js/bootstrap.min.js"></script>
