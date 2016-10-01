@@ -15,25 +15,25 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="text-center"><a href="index.html">Clouder</a></h1>
+      <h1 class="text-center"><a href="index.jsp">Clouder</a></h1>
       <form class="form-signin" action="/login" method="POST">
         <table>
           <tr>
-            <td width="100px"><c:out value="${loginLogin}"/></td>
-            <td width="150px"><input type="text" name="login" class="form-control" placeholder="Login" tabindex="1"></td>
+            <td width="100px"><c:out value="${login}"/>:</td>
+            <td width="200px"><input type="text" name="login" class="form-control" placeholder="Login"></td>
           </tr>
           <tr>
-            <td><c:out value="${loginPass}"/>: </td>
-            <td tabindex="2"><input type="password" name="password" class="form-control" placeholder="Password" tabindex="2"></td>
+            <td width="100px"><c:out value="${password}"/>:</td>
+            <td width="200px"><input type="password" name="password" class="form-control" placeholder="Password"></td>
           </tr>
           <tr>
-            <td colspan="2"><a href="/recovery.jsp"><div class="reclink"><c:out value="${loginRecovery}"/></div></a></td>
+            <td colspan="2" class="text-center"><a href="/recovery.jsp"><c:out value="${loginRecovery}"/></a></td>
           </tr>
         </table>
         <div class="checkbox">
           <label><input type="checkbox" value="remember-me">Запомнить</label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit"><c:out value="${loginIn}"/></button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit"><c:out value="${signin}"/></button>
       </form>
     </div>
   </body>

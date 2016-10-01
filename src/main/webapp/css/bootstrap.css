@@ -4497,7 +4497,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default {
   background-color: #393939;
-  border-color: #3f3f3f;
+  border-color: #424242;
 }
 .navbar-default .navbar-brand {
   color: #1b9021;
@@ -6756,22 +6756,4 @@ button.close {
   .hidden-print {
     display: none !important;
   }
-}
-
-.content {
-  text-align: center;
-  padding-top: 300px;
-  padding-bottom: 600px;
-  background-color: #444444;
-}
-
-.bottom {
-  text-align: center;
-  padding-top: 20px;
-  padding-bottom: 50px;
-  background-color: #292929;
-}
-
-.container ul {
-    list-style-type: none;
 }

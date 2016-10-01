@@ -20,7 +20,7 @@
                     <table>
                         <tr>
                             <td><input type="text" name="email" placeholder="e-mail"></td>
-                            <td><button type="submit"><c:out value="${recoveryButton}"/></button></td>
+                            <td><button type="submit"><c:out value="${send}"/></button></td>
                         </tr>
                     </table>
                 </form>

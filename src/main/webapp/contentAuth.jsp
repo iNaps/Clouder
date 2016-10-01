@@ -11,6 +11,6 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
   </head>
-    <a class="btn btn-success btn-lg" href="cabinet.jsp" role="button"><c:out value="${contentAuthCabinet}"/></a>
-    <a class="btn btn-success btn-lg" href="/login" role="button"><c:out value="${contentAuthExit}"/></a>
+    <a class="btn btn-success btn-lg" href="cabinet.jsp" role="button"><c:out value="${cabinet}"/></a>
+    <a class="btn btn-success btn-lg" href="/login" role="button"><c:out value="${exit}"/></a>
 </html>

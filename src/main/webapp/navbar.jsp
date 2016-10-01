@@ -1,20 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="n" uri="WEB-INF/custom.tld"%>
 <jsp:directive.include file="locale.jsp" />
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="index.jsp">Clouder</a>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li><a href="index.jsp">Главная</a></li>
-        <li class="active"><a href="#">О сервисе</a></li>
-        <li><a href="contacts.jsp">Контакты</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="login.html">Вход</a></li>
-        <li><a href="registration.jsp">Регистрация</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-</html>
+<ul class="nav navbar-nav navbar-right">
+    <c:choose>
+        <c:when test="${sessionScope.user == null}">
+            <li><a href="login.jsp"><c:out value="${signin}"/></a></li>
+        </c:when>
+        <c:otherwise>
+            <li><a href="cabinet.jsp"><c:out value="${cabinet}"/></a></li><li><a href="/login"><c:out value="${exit}"/></a></li>
+        </c:otherwise>
+    </c:choose>
+
+  <ul class="nav navbar-nav navbar-right">
+    <li><a href="/locale?loc=ru" ><img src="images/ru-flag.png" class="img-rounded" width="25" height="15"></a></li>
+    <li><a href="/locale?loc=en"><img src="images/en-flag.png" class="img-rounded" width="25" height="15"></a></li>
+  </ul>
+</ul>

@@ -10,7 +10,7 @@
     <title>Clouder</title>
     <link href="css/bootstrap.css" rel="stylesheet">
   </head>
-    <a class="btn btn-success btn-lg" href="login.jsp" role="button"><c:out value="${contentUnauthLogin}"/></a>
-    <a class="btn btn-success btn-lg" href="registration.jsp" role="button"><c:out value="${contentUnauthRegistration}"/></a>
+    <a class="btn btn-success btn-lg" href="login.jsp" role="button"><c:out value="${signin}"/></a>
+    <a class="btn btn-success btn-lg" href="registration.jsp" role="button"><c:out value="${registration}"/></a>
 </html>
 

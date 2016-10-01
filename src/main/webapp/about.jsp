@@ -17,14 +17,11 @@
         <a class="navbar-brand" href="index.jsp">Clouder</a>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index.jsp">Главная</a></li>
-            <li class="active"><a href="#">О сервисе</a></li>
-            <li><a href="contacts.jsp">Контакты</a></li>
+            <li><a href="index.jsp"><c:out value="${navbarMain}"/></a></li>
+            <li class="active"><a href="#"><c:out value="${navbarAbout}"/></a></li>
+            <li><a href="contacts.jsp"><c:out value="${navbarContacts}"/></a></li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="login.html">Вход</a></li>
-            <li><a href="registration.jsp">Регистрация</a></li>
-          </ul>
+          <jsp:include page="navbar.jsp"/>
         </div>
       </div>
     </nav>

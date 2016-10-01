@@ -20,7 +20,7 @@
       <form class="form-signin" action="/registration" method="POST" accept-charset="ISO-8859-1">
         <table>
           <tr>
-            <td width="100px"><c:out value="${regLogin}"/></td>
+            <td width="100px"><c:out value="${login}"/></td>
             <td width="150px"><input type="text" name="username" class="form-control" placeholder="Login" value="${requestScope.username}" tabindex="1"></td>
             <td>
               <n:if exp='${requestScope.loginError}'
@@ -40,7 +40,7 @@
             </td>
           </tr>
           <tr>
-            <td><c:out value="${regPass}"/>: </td>
+            <td><c:out value="${password}"/>: </td>
             <td width="150px"><input type="password" name="password" class="form-control" value="${requestScope.password}" tabindex="3"></td>
             <td>
               <n:if exp='${requestScope.passError}'
@@ -60,7 +60,7 @@
             </td>
           </tr>
           <tr>
-            <td><button class="btn btn-lg btn-primary btn-block" type="submit"><c:out value="${regButton}"/></button></td>
+            <td colspan="2"><button class="btn btn-lg btn-primary btn-block" type="submit"><c:out value="${regButton}"/></button></td>
           </tr>
         </table>
       </form>
