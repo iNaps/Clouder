@@ -14,24 +14,31 @@
     <link href="css/signin.css" rel="stylesheet">
   </head>
   <body>
-    <div class="container">
-      <h1 class="text-center"><a href="index.jsp">Clouder</a></h1>
-      <form class="form-signin" action="/login" method="POST">
-        <table>
-          <tr>
-            <td width="100px"><c:out value="${login}"/>:</td>
-            <td width="200px"><input type="text" name="login" class="form-control" placeholder="Login"></td>
-          </tr>
-          <tr>
-            <td width="100px"><c:out value="${password}"/>:</td>
-            <td width="200px"><input type="password" name="password" class="form-control" placeholder="Password"></td>
-          </tr>
-          <tr>
-            <td colspan="2" class="text-center"><a href="/recovery.jsp"><c:out value="${loginRecovery}"/></a></td>
-          </tr>
-        </table>
-        <button class="btn btn-lg btn-success btn-block" type="submit"><c:out value="${signin}"/></button>
-      </form>
+    <div class="background">
+    <div class="brand"><h2><a href="index.jsp">Clouder</a></h2></div>
+    <div class="loginform">
+        <form class="form-group" action="/login" method="POST">
+          <table>
+            <tr>
+              <td class="field"><c:out value="${login}"/></td>
+              <td width="200px"><input type="text" name="login" class="form-control login" placeholder="Login"></td>
+            </tr>
+            <tr>
+              <td class="field"><c:out value="${password}"/></td>
+              <td width="200px"><input type="password" name="password" class="form-control password" placeholder="Password"></td>
+            </tr>
+            <tr>
+                <td colspan="2" ><button class="btn btn-md btn-success button" type="submit"><c:out value="${signin}"/></button></td>
+            </tr>
+          </table>
+          <table class="table2">
+            <tr>
+              <td class="recovery"><a href="/recovery.jsp"><c:out value="${loginRecovery}"/></a></td>
+              <td><a href="/registration.jsp"><c:out value="${registration}"/></a></td>
+            </tr>
+          </table>
+        </form>
+      </div>
     </div>
   </body>
 </html>

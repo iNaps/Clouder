@@ -1,7 +1,7 @@
 body, html {
     height: 100%;
 }
-.background  {
+.background {
     position: relative;
     background: #292929;
     height: 100%;
@@ -18,16 +18,18 @@ body, html {
 }
 
 .loginform {
-    padding: 10px;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 8px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 1);
     border-radius: 5px;
-    top: 25%;
+    top: 50%;
     left: 50%;
     margin-left: -150px;
-    margin-top: -100px;
+    margin-top: -320px;
     position: absolute;
     width: 300px;
-    height: 190px;
+    height: 245px;
     background-color: #d5d5d5;
     text-align: center;
 }
@@ -36,15 +38,15 @@ body, html {
 }
 
 .field {
+    /*vertical-align: text-top;*/
     font-family: verdana;
     font-weight: bold;
     width: 50px;
     padding-left: 5px;
     padding-right: 10px;
 }
-.login {
-    /*background-color: #ebebeb;*/
-    margin-top: 10px;
+
+.field2 {
     margin-bottom: 5px;
 }
 
@@ -52,12 +54,15 @@ body, html {
     margin-bottom: 5px;
 }
 .button {
-    width: 200px;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    /*width: 200px;*/
+    margin-top: 10px;
 }
 .recovery {
     width: 150px;
+}
+.res {
+    padding-left: 5px;
+    padding-bottom: 8px;
 }
 .table2 {
     width: 100%;

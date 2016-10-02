@@ -71,16 +71,21 @@ public class DataPuller implements DataPullerDAO {
         return null;
     }
 
-    public boolean removeFile(String path) {
-        String sql = "DELETE FROM files where filepath=\"" + path + '"';
+    public boolean removeFile(String path, int id) {
+        String sql = "SELECT filepath FROM files where filepath=\"" + path + "\" AND id=\"" + id + '"';
         try {
-            Connector.execute(sql);
-            LOGGER.info("Deleted successful");
-            return true;
+            ResultSet set = Connector.getSet(sql);
+            if (set.next()) {
+                sql = "DELETE FROM files where filepath=\"" + path + '"';
+                Connector.execute(sql);
+                LOGGER.info("Deleted successful");
+                return true;
+            }
         } catch (SQLException exc) {
-            LOGGER.info("DB error:" + exc);
+            LOGGER.info("DB error:" + exc.toString());
             return false;
         }
+        return false;
     }
 
     public boolean uploadFile(String fileName, String filePath, int id) {

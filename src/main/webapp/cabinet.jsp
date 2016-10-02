@@ -19,7 +19,7 @@
             <a class="navbar-brand" href="index.jsp">Clouder</a>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#"><c:out value="${navbarMain}"/></a></li>
+                <li><a href="index.jsp"><c:out value="${navbarMain}"/></a></li>
                 <li><a href="about.jsp"><c:out value="${navbarAbout}"/></a></li>
                 <li><a href="contacts.jsp"><c:out value="${navbarContacts}"/></a></li>
               </ul>
@@ -29,32 +29,41 @@
         </nav>
         <div class="content">
             <div class="main" align="center">
-                <a class="btn btn-success btn-lg" href="/login" role="button"><c:out value="${exit}"/></a>
                 <table>
                     <tr>
                         <td class="text"><c:out value="${cabinetNewEmail}"/></td>
                         <form action="/edit" method="POST">
                             <td><input type="text" name="email"></td>
-                            <td><input type="submit"></td>
+                            <td><button class="btn btn-sm btn-success btn-block" type="submit"><c:out value="${send}"/></button></td>
                         </form>
+                        <td rowspan="2"><a class="btn btn-success btn-lg" href="/login" role="button"><c:out value="${exit}"/></a></td>
                     </tr>
                     <tr>
                         <td class="text"><c:out value="${cabinetNewPassword}"/></td>
                         <form action="/edit" method="POST">
                             <td><input type="password" name="password"></td>
-                            <td><input type="submit"></td>
+                            <td><button class="btn btn-sm btn-success btn-block" type="submit"><c:out value="${send}"/></button></td>
                         </form>
                     </tr>
                 </table>
-                <form action="/upload" method="POST" enctype="multipart/form-data" accept-charset="ISO-8859-1">
+                <form class="sendform" action="/upload" method="POST" enctype="multipart/form-data" accept-charset="ISO-8859-1">
                     <table>
                         <tr>
                             <td class="text"><input type="file" name="file" multiple></td>
-                            <td><input type="submit"></td>
+                            <td><button class="btn btn-sm btn-success btn-block" type="submit"><c:out value="${send}"/></button></td>
                         </tr>
                     </table>
                 </form>
                 <jsp:include page="/list"/>
+                <div class="list">
+                    <c:forEach items="${list}" var="element">
+                        <p>
+                            <c:out value="${element.getName()}"/>
+                            <a class="btn btn-success btn-sm" href='/download?link=${element.getPath()}&filename=${element.getName()}' role="button">Download</a>
+                            <a class="btn btn-danger btn-sm" href='/remove?path=${element.getPath()}' role="button">Remove</a>
+                        </p>
+                    </c:forEach>
+                </div>
             </div>
         </div>
         <div class="bottom">

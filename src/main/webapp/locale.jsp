@@ -35,6 +35,9 @@
 <fmt:message key="cabinet.newpass" bundle="${lang}" var="cabinetNewPassword" />
 <fmt:message key="login.recovery" bundle="${lang}" var="loginRecovery" />
 
+<fmt:message key="rec.title" bundle="${lang}" var="recTitle" />
+<fmt:message key="rec.text" bundle="${lang}" var="recText" />
+
 <fmt:message key="bottom.about" bundle="${lang}" var="bottomAbout" />
 <fmt:message key="bottom.intro" bundle="${lang}" var="bottomIntro" />
 <fmt:message key="bottom.faq" bundle="${lang}" var="bottomFaq" />

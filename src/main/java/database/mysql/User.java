@@ -65,6 +65,9 @@ public class User implements UserDAO {
     }
 
     public boolean setPassword(String password) {
+        if (password == null) {
+            return false;
+        }
         try {
             String sql = "UPDATE users SET password=\'" + password + "\' where id=\'" + this.id + "\'";
             Connector.execute(sql);

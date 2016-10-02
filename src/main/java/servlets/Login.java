@@ -27,8 +27,6 @@ public class Login extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = resp.getWriter();
         String username = req.getParameter("login");
         String password = req.getParameter("password");
         HttpSession session = req.getSession();
@@ -38,7 +36,8 @@ public class Login extends HttpServlet {
             LOGGER.info("User signed in");
             resp.sendRedirect("/cabinet.jsp");
         } else {
-            out.print("false");
+            req.setAttribute("error", true);
+            req.getRequestDispatcher("/login.jsp").forward(req,resp);
         }
     }
 }

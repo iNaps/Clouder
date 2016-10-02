@@ -16,7 +16,6 @@
         <li><a href="index.jsp"><c:out value="${bottomTelegram}"/></a></li>
         <li><a href="index.jsp"><c:out value="${bottomAndroid}"/></a></li>
         <li><a href="index.jsp"><c:out value="${bottomIos}"/></a></li>
-        <li><a href="index.jsp"><c:out value="${bottomFaq}"/></a></li>
     </ul>
 </div>
 <div class="list3">
