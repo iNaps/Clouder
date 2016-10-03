@@ -5,7 +5,8 @@ import org.apache.log4j.Logger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Confirmator implements ConfirmatorDAO {
+public final class Confirmator implements ConfirmatorDAO {
+    private static final Logger LOGGER = Logger.getLogger(Confirmator.class.getName());
 
     private static Confirmator inst;
     private Confirmator(){}
@@ -16,7 +17,6 @@ public class Confirmator implements ConfirmatorDAO {
         return inst;
     }
 
-    private static final Logger LOGGER = Logger.getLogger(Confirmator.class.getName());
     public void addLink(String oldEmail, String newEmail, String md5) {
         try {
             String sql = "insert into emailconfirm values(" +

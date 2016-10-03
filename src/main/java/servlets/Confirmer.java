@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
 @WebServlet("/confirmer")
-public class Confirmer extends HttpServlet {
+public final class Confirmer extends HttpServlet {
     private static final Logger LOGGER = Logger.getLogger(Confirmer.class.getName());
 
     @Override

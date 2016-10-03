@@ -1,4 +1,4 @@
-package servlets.JspContent;
+package servlets;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/index")
-public class Index extends HttpServlet {
+public final class Index extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Object user = req.getSession().getAttribute("user");

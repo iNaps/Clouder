@@ -2,11 +2,10 @@ package database.mysql;
 
 import database.UserDAO;
 import org.apache.log4j.Logger;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class User implements UserDAO {
+public final class User implements UserDAO {
     private static final Logger LOGGER = Logger.getLogger(User.class.getName());
     private int id;
     private String username;

@@ -1,6 +1,5 @@
 package servlets;
 
-import database.mysql.Connector;
 import org.apache.log4j.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,8 +10,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/locale")
-public class Locale extends HttpServlet {
-    private static final Logger LOGGER = Logger.getLogger(Connector.class.getName());
+public final class Locale extends HttpServlet {
+    private static final Logger LOGGER = Logger.getLogger(Locale.class.getName());
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();

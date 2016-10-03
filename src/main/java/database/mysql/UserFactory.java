@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserFactory implements UserFactoryDAO {
+public final class UserFactory implements UserFactoryDAO {
     private static final Logger LOGGER = Logger.getLogger(UserFactory.class.getName());
     private static UserFactory inst;
     private UserFactory(){}

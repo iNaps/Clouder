@@ -3,7 +3,6 @@ package servlets;
 import database.mysql.User;
 import org.apache.log4j.Logger;
 import tools.EmailChecker;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +12,7 @@ import java.io.*;
 import java.util.regex.Pattern;
 
 @WebServlet("/edit")
-public class Edit extends HttpServlet {
+public final class Edit extends HttpServlet {
     private static final Pattern MAIL = Pattern.compile("^[А-Яа-яA-Za-z0-9]+@[А-Яа-яA-Za-z0-9]+\\.[А-Яа-яA-Za-z0-9]+$", Pattern.CASE_INSENSITIVE);
     private static final Logger LOGGER = Logger.getLogger(Edit.class.getName());
 

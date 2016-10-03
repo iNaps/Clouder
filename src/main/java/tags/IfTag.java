@@ -5,7 +5,7 @@ import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 import java.io.IOException;
 
-public class IfTag extends SimpleTagSupport {
+public final class IfTag extends SimpleTagSupport {
     private Boolean exp;
     private String isTrue;
     private String isFalse;

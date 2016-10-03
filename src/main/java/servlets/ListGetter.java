@@ -10,7 +10,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 @WebServlet("/list")
-public class ListGetter extends HttpServlet {
+public final class ListGetter extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");

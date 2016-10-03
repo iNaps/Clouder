@@ -5,7 +5,7 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 import org.apache.tomcat.jdbc.pool.PoolProperties;
 import java.sql.*;
 
-public class Connector {
+public final class Connector {
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost:8081/clouderdb";
     private static final String USER = "root";

@@ -1,6 +1,5 @@
 package servlets;
 
-import database.mysql.Connector;
 import database.mysql.DataPuller;
 import org.apache.log4j.Logger;
 import javax.mail.*;
@@ -17,8 +16,8 @@ import java.util.Date;
 import java.util.Properties;
 
 @WebServlet("/sender")
-public class Sender extends HttpServlet {
-    private static final Logger LOGGER = Logger.getLogger(Connector.class.getName());
+public final class Sender extends HttpServlet {
+    private static final Logger LOGGER = Logger.getLogger(Sender.class.getName());
     private static final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
     private static final String username = "smtp.clouder.server@gmail.com";//
     private static final String password = "justcat04";

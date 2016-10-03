@@ -1,9 +1,7 @@
 package tools;
 
 import database.mysql.Confirmator;
-import database.mysql.Connector;
 import org.apache.log4j.Logger;
-
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -13,8 +11,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.Properties;
 
-public class EmailChecker {
-    private static final Logger LOGGER = Logger.getLogger(Connector.class.getName());
+public final class EmailChecker {
+    private static final Logger LOGGER = Logger.getLogger(EmailChecker.class.getName());
     private static final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
     private static final String username = "smtp.clouder.server@gmail.com";//
     private static final String password = "justcat04";

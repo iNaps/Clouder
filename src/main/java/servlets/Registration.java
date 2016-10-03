@@ -2,7 +2,6 @@ package servlets;
 
 import database.mysql.DataPuller;
 import database.mysql.UserFactory;
-import database.mysql.Connector;
 import database.mysql.User;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.log4j.Logger;
@@ -13,8 +12,8 @@ import java.io.IOException;
 import java.util.regex.Pattern;
 
 @WebServlet("/registration")
-public class Registration extends HttpServlet {
-    private static final Logger LOGGER = Logger.getLogger(Connector.class.getName());
+public final class Registration extends HttpServlet {
+    private static final Logger LOGGER = Logger.getLogger(Registration.class.getName());
     private static final Pattern MAIL = Pattern.compile("^[А-Яа-яA-Za-z0-9]+@[А-Яа-яA-Za-z0-9]+\\.[А-Яа-яA-Za-z0-9]+$", Pattern.CASE_INSENSITIVE);
     private static final Pattern PASS = Pattern.compile("^[А-Яа-яA-Za-z0-9]+$", Pattern.CASE_INSENSITIVE);
 

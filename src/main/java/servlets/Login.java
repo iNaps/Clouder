@@ -2,7 +2,6 @@ package servlets;
 
 import database.mysql.User;
 import database.mysql.UserFactory;
-import database.mysql.Connector;
 import org.apache.log4j.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,11 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet("/login")
-public class Login extends HttpServlet {
-    private static final Logger LOGGER = Logger.getLogger(Connector.class.getName());
+public final class Login extends HttpServlet {
+    private static final Logger LOGGER = Logger.getLogger(Login.class.getName());
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

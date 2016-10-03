@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
 @WebServlet("/download")
-public class Download extends HttpServlet {
+public final class Download extends HttpServlet {
     private static final Logger LOGGER = Logger.getLogger(Download.class.getName());
 
     @Override

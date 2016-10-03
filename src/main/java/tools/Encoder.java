@@ -1,8 +1,10 @@
 package tools;
 
+import org.apache.log4j.Logger;
 import java.util.regex.Pattern;
 
-public class Encoder {
+public final class Encoder {
+    private static final Logger LOGGER = Logger.getLogger(Encoder.class.getName());
     private static final Pattern CHARS = Pattern.compile("^[A-Za-z0-9!#$&+-.~|]?$", Pattern.CASE_INSENSITIVE);
     public static String encode(String s) {
         try {
@@ -21,6 +23,7 @@ public class Encoder {
             }
             return sb.toString();
         } catch (Exception exc){
+            LOGGER.info("Encoder error: " + exc.toString());
             return null;
         }
     }

@@ -1,6 +1,5 @@
 package servlets;
 
-import database.mysql.Connector;
 import database.mysql.DataPuller;
 import database.mysql.User;
 import org.apache.commons.lang3.StringEscapeUtils;
@@ -20,8 +19,8 @@ import java.util.regex.Pattern;
 @MultipartConfig(fileSizeThreshold=1024*1024,
                 maxFileSize=(long)5*1024*1024*1024,
                 maxRequestSize=(long)5*1024*1024*1024)
-public class Upload extends HttpServlet {
-    private static final Logger LOGGER = Logger.getLogger(Connector.class.getName());
+public final class Upload extends HttpServlet {
+    private static final Logger LOGGER = Logger.getLogger(Upload.class.getName());
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

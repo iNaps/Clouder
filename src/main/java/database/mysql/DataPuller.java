@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class DataPuller implements DataPullerDAO {
+public final class DataPuller implements DataPullerDAO {
     private static final Logger LOGGER = Logger.getLogger(DataPuller.class.getName());
 
     private static DataPuller inst;

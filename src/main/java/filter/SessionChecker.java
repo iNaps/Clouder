@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebFilter(filterName = "session", urlPatterns = {"/cabinet.jsp"})
-public class SessionChecker implements Filter {
+public final class SessionChecker implements Filter {
     private static final Logger LOGGER = Logger.getLogger(SessionChecker.class.getName());
     public void doFilter(ServletRequest reqs, ServletResponse resps, FilterChain fc) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) reqs;

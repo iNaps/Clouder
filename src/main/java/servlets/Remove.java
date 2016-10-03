@@ -1,6 +1,5 @@
 package servlets;
 
-import database.mysql.Connector;
 import database.mysql.DataPuller;
 import database.mysql.User;
 import org.apache.log4j.Logger;
@@ -14,8 +13,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet("/remove")
-public class Remove extends HttpServlet {
-    private static final Logger LOGGER = Logger.getLogger(Connector.class.getName());
+public final class Remove extends HttpServlet {
+    private static final Logger LOGGER = Logger.getLogger(Remove.class.getName());
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
