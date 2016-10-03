@@ -29,6 +29,7 @@
         </nav>
         <div class="content">
             <div class="main" align="center">
+                <h3 class="welcome"><c:out value="${welcome}"/> <c:out value="${sessionScope.user.getUsername()}"/></h3>
                 <table>
                     <tr>
                         <td class="text"><c:out value="${cabinetNewEmail}"/></td>

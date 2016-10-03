@@ -5,7 +5,7 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 import org.apache.tomcat.jdbc.pool.PoolProperties;
 import java.sql.*;
 
-public class Connector implements AutoCloseable{
+public class Connector {
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost:8081/clouderdb";
     private static final String USER = "root";
@@ -22,7 +22,9 @@ public class Connector implements AutoCloseable{
     public static void execute(String sql) throws SQLException {
         connection = datasource.getConnection();
         connection.createStatement().execute(sql);
+        close();
     }
+
     public static ResultSet getSet(String sql) throws SQLException {
         connection = datasource.getConnection();
         statement = connection.createStatement();
@@ -68,7 +70,7 @@ public class Connector implements AutoCloseable{
         datasource.setPoolProperties(poolProperties);
     }
 
-    public void close() throws Exception {
+    public static void close() {
         try {
             if(resultSet != null)
                 resultSet.close();

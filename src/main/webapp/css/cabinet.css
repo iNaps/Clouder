@@ -1,6 +1,6 @@
 .content {
   background-color: #444444;
-  padding-top: 200px;
+  padding-top: 100px;
   padding-bottom: 600px;
   text-align: center;
 }
@@ -13,6 +13,9 @@
 }
 .main td input{
     color: #2f2f2f;
+}
+.welcome {
+    margin-bottom: 50px;
 }
 .sendform td input{
     color: #dddddd;

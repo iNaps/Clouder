@@ -23,7 +23,7 @@ public class DataPuller implements DataPullerDAO {
         try {
             String sql = "SELECT id FROM users where login=\"" + login + '"';
             ResultSet set = Connector.getSet(sql);
-            return set.next();
+            return close(set);
         } catch (Exception exc){
             LOGGER.info("DB error:" + exc);
             return false;
@@ -34,7 +34,7 @@ public class DataPuller implements DataPullerDAO {
         try {
             String sql = "SELECT id FROM users where email=\"" + email + '"';
             ResultSet set = Connector.getSet(sql);
-            return set.next();
+            return close(set);
         } catch (Exception exc){
             LOGGER.info("DB error:" + exc);
             return false;
@@ -48,9 +48,11 @@ public class DataPuller implements DataPullerDAO {
             while (set.next()) {
                 if (set.getString("filepath").equals(link)) {
                     LOGGER.info("Filepath OK");
+                    close(set);
                     return true;
                 }
             }
+            close(set);
         } catch (Exception exc) {
             LOGGER.info("DB select error:" + exc);
         }
@@ -61,10 +63,13 @@ public class DataPuller implements DataPullerDAO {
         try {
             String sql = "SELECT password FROM users where email=\"" + email + '"';
             ResultSet set = Connector.getSet(sql);
+            String password = "";
             if (set.next()) {
                 LOGGER.info("Email is exist");
-                return set.getString("password");
+                password = set.getString("password");
             }
+            close(set);
+            return password;
         } catch (SQLException exc) {
             LOGGER.info("DB error:" + exc);
         }
@@ -76,14 +81,16 @@ public class DataPuller implements DataPullerDAO {
         try {
             ResultSet set = Connector.getSet(sql);
             if (set.next()) {
-                sql = "DELETE FROM files where filepath=\"" + path + '"';
+                sql = "DELETE FROM files where filepath=\"" + path + "\" AND id=\"" + id + '"';
                 Connector.execute(sql);
                 LOGGER.info("Deleted successful");
-                return true;
+                sql = "SELECT filepath FROM files where filepath=\"" + path + '"';
+                set = Connector.getSet(sql);
+                return !close(set);
             }
+            close(set);
         } catch (SQLException exc) {
             LOGGER.info("DB error:" + exc.toString());
-            return false;
         }
         return false;
     }
@@ -119,6 +126,7 @@ public class DataPuller implements DataPullerDAO {
                 path = set.getString("filepath");
                 list.add(new Element(filename, path));
             }
+            close(set);
             LOGGER.info("List was formed");
             return list;
         } catch (SQLException exc){
@@ -142,9 +150,21 @@ public class DataPuller implements DataPullerDAO {
             if (set.next()) {
                 isNameExist = set.getString("filename").equals(fileName);
             }
+            close(set);
             return isPathExist && isNameExist;
         } catch (Exception exc){
             LOGGER.info("DB error:" + exc);
+            return false;
+        }
+    }
+
+    private boolean close(ResultSet set) throws SQLException {
+        if (set.next()) {
+            Connector.close();
+            LOGGER.info("DB connection was closed");
+            return true;
+        } else {
+            Connector.close();
             return false;
         }
     }

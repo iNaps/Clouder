@@ -32,6 +32,7 @@
 <fmt:message key="reg.pass2" bundle="${lang}" var="regPass2" />
 <fmt:message key="reg.button" bundle="${lang}" var="regButton" />
 <fmt:message key="cabinet.newmail" bundle="${lang}" var="cabinetNewEmail" />
+<fmt:message key="cabinet.welcome" bundle="${lang}" var="welcome" />
 <fmt:message key="cabinet.newpass" bundle="${lang}" var="cabinetNewPassword" />
 <fmt:message key="login.recovery" bundle="${lang}" var="loginRecovery" />
 
