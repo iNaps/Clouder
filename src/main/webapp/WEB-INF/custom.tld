@@ -4,7 +4,7 @@
     <short-name>Example TLD</short-name>
     <tag>
         <name>if</name>
-        <tag-class>tags.IfTag</tag-class>
+        <tag-class>com.clouder.tags.IfTag</tag-class>
         <body-content>scriptless</body-content>
 
         <attribute>
